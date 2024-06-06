@@ -17,7 +17,26 @@ jobs:
         # output-file: README.md
         # output-method: inject
         # git-push: "true"
-    - name: Pushing to the protected branch 'master'
-      uses: CasperWA/push-protected@v2
+    - name: Configure git
+      run: |
+        echo "HI" > test.txt
+    - name: Add and commit change
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add .
+        git commit -m "Bump version" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
       with:
-        token: ${{ secrets.PAT }}
+        github_token: ${{ secrets.PAT }}
+        branch: main
+        force: true
+    # - name: Pushing to the protected branch 'main'
+    #   uses: CasperWA/push-protected@v2
+    #   with:
+    #     token: ${{ secrets.PAT }}
+    #     branch: main
+    # - name: Configure git
+    #   run: |
+    #     git status
