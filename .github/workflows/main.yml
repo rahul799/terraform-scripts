@@ -14,7 +14,7 @@ jobs:
         working-dir: ./cluster
         # output-file: README.md
         # output-method: inject
-        # git-push: "true"
-    - name: Commit files
-      run: |
-        git status
+        git-push: "true"
+    # - name: Commit files
+    #   run: |
+    #     git status
