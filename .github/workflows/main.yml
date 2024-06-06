@@ -22,10 +22,11 @@ jobs:
         echo "HI" > test.txt
     - name: Add and commit change
       run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        # git add .
-        git commit -m "Bump version" -a
+        git config user.name ${{ github.actor }}
+        git config user.email ${{ github.actor }}+github@noreply.com
+        git add .
+        git commit -m "chore: deploy ${{ inputs.service }} ${{ github.sha }}"
+        # git push
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
