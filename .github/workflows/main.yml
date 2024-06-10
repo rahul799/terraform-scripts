@@ -23,6 +23,13 @@ jobs:
       with:
         working-dir: ./cluster
 
+    - name: Add and commit change
+      run: |
+        pwd
+        cd cluster
+        ls
+        git status
+
     # - name: Add and commit change
     #   run: |
     #     pwd
