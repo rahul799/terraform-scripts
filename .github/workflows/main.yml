@@ -13,19 +13,23 @@ jobs:
       run: |
         git config --global user.name "${{ github.actor }}"
         git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+        echo "hi" > hi.txt
+        git status
+        git add .
+        git commit -m "files added"
 
     - name: Render terraform docs inside the README.md and push changes back to PR branch
       uses: terraform-docs/gh-actions@v1.2.0
       with:
         working-dir: ./cluster
 
-    - name: Add and commit change
-      run: |
-        pwd
-        ls -la .git/objects
-        chmod 777 -R .git/objects
-        git add .
-        git commit -m "chore: deploy ${{ inputs.service }} ${{ github.sha }}"
+    # - name: Add and commit change
+    #   run: |
+    #     pwd
+    #     ls -la .git/objects
+    #     chmod 777 -R .git/objects
+    #     git add .
+    #     git commit -m "chore: deploy ${{ inputs.service }} ${{ github.sha }}"
 
     - name: Push changes
       uses: ad-m/github-push-action@master
