@@ -29,6 +29,7 @@ jobs:
         cd cluster
         ls
         git status
+        git commit -m "readme"
 
     # - name: Add and commit change
     #   run: |
