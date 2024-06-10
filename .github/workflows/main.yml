@@ -9,19 +9,22 @@ jobs:
       with:
         token: ${{ secrets.PAT }}
 
-    - name: Configure git
-      run: |
-        git config --global user.name "${{ github.actor }}"
-        git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-        # echo "hi" > hi.txt
-        # git status
-        # git add .
-        # git commit -m "files added"
+    # - name: Configure git
+    #   run: |
+    #     git config --global user.name "${{ github.actor }}"
+    #     git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+    #     # echo "hi" > hi.txt
+    #     # git status
+    #     # git add .
+    #     # git commit -m "files added"
 
     - name: Render terraform docs inside the README.md and push changes back to PR branch
       uses: terraform-docs/gh-actions@v1.2.0
       with:
         working-dir: ./cluster
+        git-commit-message: "helm-readme added"
+        git-push-user-email: "${{ github.actor }}@users.noreply.github.com"
+        git-push-user-name: "${{ github.actor }}"
 
     - name: Add and commit change
       run: |
