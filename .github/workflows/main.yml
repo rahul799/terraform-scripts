@@ -9,10 +9,10 @@ jobs:
       with:
         token: ${{ secrets.PAT }}
 
-    # - name: Configure git
-    #   run: |
-    #     git config --global user.name "${{ github.actor }}"
-    #     git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+    - name: Configure git
+      run: |
+        git config --global user.name "${{ github.actor }}"
+        git config --global user.email "${{ github.actor }}@users.noreply.github.com"
     #     # echo "hi" > hi.txt
     #     # git status
     #     # git add .
@@ -22,16 +22,16 @@ jobs:
       uses: terraform-docs/gh-actions@v1.2.0
       with:
         working-dir: ./cluster
-        git-commit-message: "helm-readme added"
-        git-push-user-email: "${{ github.actor }}@users.noreply.github.com"
-        git-push-user-name: "${{ github.actor }}"
+        # git-commit-message: "helm-readme added"
+        # git-push-user-email: "${{ github.actor }}@users.noreply.github.com"
+        # git-push-user-name: "${{ github.actor }}"
 
     - name: Add and commit change
       run: |
-        pwd
-        cd cluster
-        ls
-        git status
+        # pwd
+        # cd cluster
+        # ls
+        # git status
         git commit -m "readme"
 
     # - name: Add and commit change
