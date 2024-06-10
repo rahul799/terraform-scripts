@@ -21,6 +21,9 @@ jobs:
 
     - name: Add and commit change
       run: |
+        pwd
+        ls -la .git/objects
+        chmod 777 -R .git/objects
         git add .
         git commit -m "chore: deploy ${{ inputs.service }} ${{ github.sha }}"
 
